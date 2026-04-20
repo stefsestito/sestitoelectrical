@@ -23,23 +23,23 @@
 <meta property="og:site_name" content="Sestito Electrical LLC" />
 <meta property="og:title" content="Sestito Electrical LLC | Master Electrician | North Shore, MA" />
 <meta property="og:description" content="Twenty years of union experience, one master electrician on every job. Luxury residential, EV chargers, service upgrades, pools, saunas, and commercial across the North Shore and beyond." />
-<meta property="og:image" content="https://stefsestito.github.io/sestitoelectrical/og-image.png" />
-<meta property="og:image:secure_url" content="https://stefsestito.github.io/sestitoelectrical/og-image.png" />
+<meta property="og:image" content="https://stefsestito.github.io/sestitoelectrical/og-image.png?v=2" />
+<meta property="og:image:secure_url" content="https://stefsestito.github.io/sestitoelectrical/og-image.png?v=2" />
 <meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
+<meta property="og:image:width" content="2400" />
+<meta property="og:image:height" content="1260" />
 <meta property="og:image:alt" content="Sestito Electrical LLC &mdash; American-made electrical craft. Master Electrician in Middleton, Mass." />
 <meta property="og:locale" content="en_US" />
 
 <!-- iMessage / link-preview-services fallback -->
-<link rel="image_src" href="https://stefsestito.github.io/sestitoelectrical/og-image.png" />
+<link rel="image_src" href="https://stefsestito.github.io/sestitoelectrical/og-image.png?v=2" />
 
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:url" content="https://stefsestito.github.io/sestitoelectrical/" />
 <meta name="twitter:title" content="Sestito Electrical LLC | Master Electrician | North Shore, MA" />
 <meta name="twitter:description" content="Twenty years of union experience, one master electrician on every job. Call Stefano at 617-529-1019." />
-<meta name="twitter:image" content="https://stefsestito.github.io/sestitoelectrical/og-image.png" />
+<meta name="twitter:image" content="https://stefsestito.github.io/sestitoelectrical/og-image.png?v=2" />
 <meta name="twitter:image:alt" content="Sestito Electrical LLC &mdash; American-made electrical craft." />
 
 <!-- Local business structured data (helps Google show phone, area, hours in search) -->
@@ -377,13 +377,14 @@
     nav.topbar.scrolled{padding:10px 20px}
     .nav-links{display:none}
     .nav-phone{display:none}
-    .menu-toggle{display:flex;flex-direction:column;gap:5px;z-index:101;position:relative}
+    .menu-toggle{display:flex;flex-direction:column;gap:5px;z-index:201;position:relative}
     .menu-toggle span{width:22px;height:2px;background:var(--ink);display:block;transition:transform .3s,opacity .3s}
+    .menu-toggle.open span{background:var(--ink)}
     .menu-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
     .menu-toggle.open span:nth-child(2){opacity:0}
     .menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-    .nav-links.open{display:flex;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bone);flex-direction:column;justify-content:center;align-items:center;gap:28px;z-index:100;font-size:18px;letter-spacing:.18em;padding:60px 24px}
+    .nav-links.open{display:flex;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bone);flex-direction:column;justify-content:center;align-items:center;gap:28px;z-index:200;font-size:18px;letter-spacing:.18em;padding:60px 24px;overflow-y:auto;-webkit-overflow-scrolling:touch}
     .nav-links.open a{padding:10px 0;color:var(--ink)}
     .nav-links.open a:hover{color:var(--flag-red)}
     .nav-links.open .nav-phone-mobile{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border:1.5px solid var(--ink);margin-top:12px;font-size:14px;color:var(--ink)}
@@ -1006,27 +1007,54 @@
     else topbar.classList.remove('scrolled');
   });
 
-  // Mobile menu toggle
+  // Mobile menu toggle — robust iOS-safe scroll lock
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
   const navPhoneMobile = document.querySelector('.nav-phone-mobile');
+  let savedScrollY = 0;
+
+  function lockScroll() {
+    savedScrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${savedScrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+  }
+  function unlockScroll() {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    window.scrollTo(0, savedScrollY);
+  }
+  function closeMenu() {
+    navLinks.classList.remove('open');
+    menuToggle.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    if (navPhoneMobile) navPhoneMobile.style.display = 'none';
+    unlockScroll();
+  }
+  function openMenu() {
+    lockScroll();
+    navLinks.classList.add('open');
+    menuToggle.classList.add('open');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    if (navPhoneMobile) navPhoneMobile.style.display = 'inline-flex';
+  }
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('open');
-      menuToggle.classList.toggle('open', isOpen);
-      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-      if (navPhoneMobile) navPhoneMobile.style.display = isOpen ? 'inline-flex' : 'none';
+      if (navLinks.classList.contains('open')) closeMenu();
+      else openMenu();
     });
-    // Close menu when a link is tapped
+    // Close menu when a link is tapped (navLinks then scrolls to anchor)
     navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        menuToggle.classList.remove('open');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-        if (navPhoneMobile) navPhoneMobile.style.display = 'none';
-      });
+      link.addEventListener('click', closeMenu);
+    });
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) closeMenu();
     });
   }
   const io = new IntersectionObserver((entries) => {
