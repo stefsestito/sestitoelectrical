@@ -82,5 +82,5 @@ Every project starts with a free on-site walkthrough. Stefano reviews the scope,
 - [Service Area](https://sestitoelectrical.com/#area)
 - [Owner / Operator](https://sestitoelectrical.com/#founder)
 - [Recent Work (Instagram)](https://sestitoelectrical.com/#work)
-- [FAQ](https://sestitoelectrical.com/#faq)
+- [FAQ](https://sestitoelectrical.com/faq.html)
 - [Contact / Request Estimate](https://sestitoelectrical.com/#contact)
