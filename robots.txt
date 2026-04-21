@@ -1,0 +1,36 @@
+# Sestito Electrical LLC — robots.txt
+# Allow all well-behaved search and AI crawlers full access.
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://sestitoelectrical.com/sitemap.xml
+
+# Explicitly welcome AI crawlers for citation visibility
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
