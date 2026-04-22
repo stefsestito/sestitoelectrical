@@ -43,12 +43,12 @@
       "@id": "https://sestitoelectrical.com/faq.html#faq",
       "mainEntity": [
         {"@type": "Question", "name": "What areas does Sestito Electrical serve?", "acceptedAnswer": {"@type": "Answer", "text": "Sestito Electrical is based in Middleton, Massachusetts and serves the entire North Shore of Massachusetts, including Topsfield, Boxford, Hamilton, Wenham, Ipswich, Manchester-by-the-Sea, Beverly, Danvers, Andover, North Andover, Lynnfield, North Reading, Marblehead, Peabody, and Gloucester. For larger projects, Stefano also travels throughout Massachusetts, New Hampshire, and Rhode Island."}},
-        {"@type": "Question", "name": "Is Sestito Electrical licensed and insured in Massachusetts?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Stefano Sestito holds a Massachusetts Master Electrician license and carries full liability insurance and a surety bond. Every job is pulled under permit when code requires it, and all inspection costs are included up front in the written estimate."}},
-        {"@type": "Question", "name": "Who actually does the work on a Sestito Electrical job?", "acceptedAnswer": {"@type": "Answer", "text": "Stefano Sestito personally leads every project. He is the owner-operator, not a salesman who hands jobs off to a crew. With twenty years of union-trained experience as a journeyman and foreman, he is on site for the key phases of every install and is accountable from estimate through final inspection."}},
+        {"@type": "Question", "name": "Is Sestito Electrical licensed and insured in Massachusetts?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Stefano Sestito holds a Massachusetts Master Electrician license and carries full liability insurance. Every job is pulled under permit when code requires it, and all inspection costs are included up front in the written estimate."}},
+        {"@type": "Question", "name": "Who actually does the work on a Sestito Electrical job?", "acceptedAnswer": {"@type": "Answer", "text": "Stefano Sestito personally leads every project. He is the owner-operator, not a salesman who hands jobs off to a crew. With twenty years of formal training as a journeyman and foreman on large-scale commercial projects, he is on site for the key phases of every install and is accountable from estimate through final inspection."}},
         {"@type": "Question", "name": "Does Sestito Electrical install EV chargers like Tesla Wall Connectors?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Sestito Electrical installs Tesla Wall Connectors, universal NEMA 14-50 outlets, and hardwired Level 2 EV chargers from every major brand. Every installation includes a proper load calculation, a dedicated circuit sized for the charger, and permit coordination with the local inspector."}},
         {"@type": "Question", "name": "How do I get a free estimate from Sestito Electrical?", "acceptedAnswer": {"@type": "Answer", "text": "Call Stefano directly at 617-529-1019 or email Stefano.sestito@yahoo.com. Every estimate starts with a free on-site walkthrough where Stefano reviews the scope, discusses options honestly, and then delivers an itemized written estimate within a few days. Response time is one business day or less."}},
         {"@type": "Question", "name": "Does Sestito Electrical work on luxury custom homes?", "acceptedAnswer": {"@type": "Answer", "text": "Luxury residential is the core of the business. Stefano specializes in high-end homes across the North Shore, handling everything from full new-construction wiring to retrofit work in historic and custom homes. Every installation is designed for both code compliance and the aesthetic detail luxury homes demand."}},
-        {"@type": "Question", "name": "What makes Sestito Electrical different from other North Shore electricians?", "acceptedAnswer": {"@type": "Answer", "text": "Three things: Stefano is union-trained with twenty years of experience as a journeyman and foreman on large-scale commercial and healthcare projects; he is personally on site for every job instead of dispatching crews; and every estimate is itemized and transparent with permit and inspection costs included up front."}}
+        {"@type": "Question", "name": "What makes Sestito Electrical different from other North Shore electricians?", "acceptedAnswer": {"@type": "Answer", "text": "Three things: Stefano is a master electrician with twenty years of formal training as a journeyman and foreman on large-scale commercial and healthcare projects; he is personally on site for every job instead of dispatching crews; and every estimate is itemized and transparent with permit and inspection costs included up front."}}
       ]
     }
   ]
@@ -73,7 +73,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;scroll-padding-top:80px}
-  body{font-family:var(--sans);background:var(--bone);color:var(--ink);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;text-align:left}
+  body{font-family:var(--sans);background:var(--bone);color:var(--ink);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overflow-x:hidden;text-align:left}
   ::selection{background:var(--flag-red);color:var(--bone)}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
@@ -105,7 +105,7 @@
   .brand-mark{width:44px;height:44px;flex-shrink:0;display:grid;place-items:center}
   .brand-mark svg{width:100%;height:100%;display:block}
   .brand-text{display:flex;flex-direction:column;line-height:1;font-family:var(--stencil);font-weight:600;font-size:17px;letter-spacing:.04em;text-transform:uppercase;text-align:left}
-  .brand-text small{font-family:var(--sans);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--flag-red);margin-top:5px;font-weight:600}
+  .brand-text small{font-family:var(--sans);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--flag-red);margin-top:5px;font-weight:600}
   .nav-links{display:flex;align-items:center;gap:26px;list-style:none;font-family:var(--stencil);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
   .nav-links a{position:relative;padding:4px 0;transition:color .25s;cursor:pointer}
   .nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--flag-red);transition:width .3s}
@@ -117,7 +117,8 @@
   .menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px}
 
   /* HERO — fills viewport so ticker sits at the fold */
-  .hero{position:relative;padding:92px 0 40px;overflow:hidden;background:var(--bone);min-height:calc(100vh - 54px);display:flex;align-items:center}
+  .hero{position:relative;padding:92px 0 40px;overflow:hidden;background:var(--bone);min-height:calc(100vh - 54px);min-height:calc(-webkit-fill-available - 54px);display:flex;align-items:center}
+  @supports (height: 100dvh){.hero{min-height:calc(100dvh - 54px)}}
   .hero-flag-bg{position:absolute;top:40px;right:-60px;width:680px;height:450px;opacity:.22;transform:rotate(-5deg);pointer-events:none;z-index:0}
   .hero-flag-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,transparent 35%,var(--bone) 85%);pointer-events:none}
   .hero-flag-bg svg{width:100%;height:100%;display:block}
@@ -257,7 +258,7 @@
   .founder-portrait{position:absolute;top:10px;left:10px;right:10px;bottom:10px;background-size:cover;background-position:center 20%}
   .founder-portrait::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(10,22,40,.3))}
   .founder-badge{position:absolute;bottom:-16px;right:-16px;background:var(--flag-red);color:var(--bone);padding:12px 18px;font-family:var(--stencil);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;z-index:2;text-align:left}
-  .founder-badge small{display:block;font-size:9px;letter-spacing:.22em;opacity:.85;margin-top:4px;font-weight:400}
+  .founder-badge small{display:block;font-size:10px;letter-spacing:.2em;opacity:.85;margin-top:4px;font-weight:400}
   .founder-copy{text-align:left}
   .founder-copy .section-title{color:var(--bone);margin-bottom:10px;font-size:clamp(28px,3.6vw,44px)}
   .founder-copy .section-title em{color:var(--brass)}
@@ -376,7 +377,7 @@
     .nav-links.open .nav-phone-mobile:hover{background:var(--ink);color:var(--bone)}
     .brand-mark{width:38px;height:38px}
     .brand-text{font-size:14px}
-    .brand-text small{font-size:8px}
+    .brand-text small{font-size:9px}
 
     .hero{padding:88px 0 44px;min-height:auto;display:block}
     .hero-grid{grid-template-columns:1fr;gap:32px}
@@ -586,11 +587,11 @@
       </details>
       <details class="faq-item">
         <summary><h3>Is Sestito Electrical licensed and insured in Massachusetts?</h3><span class="plus">+</span></summary>
-        <div class="faq-answer"><p>Yes. Stefano Sestito holds a Massachusetts Master Electrician license and carries full liability insurance and a surety bond. Every job is pulled under permit when code requires it, and all inspection costs are included up front in the written estimate.</p></div>
+        <div class="faq-answer"><p>Yes. Stefano Sestito holds a Massachusetts Master Electrician license and carries full liability insurance. Every job is pulled under permit when code requires it, and all inspection costs are included up front in the written estimate.</p></div>
       </details>
       <details class="faq-item">
         <summary><h3>Who actually does the work on a Sestito Electrical job?</h3><span class="plus">+</span></summary>
-        <div class="faq-answer"><p>Stefano Sestito personally leads every project. He is the owner-operator, not a salesman who hands jobs off to a crew. With twenty years of union-trained experience as a journeyman and foreman, he is on site for the key phases of every install and is accountable from estimate through final inspection.</p></div>
+        <div class="faq-answer"><p>Stefano Sestito personally leads every project. He is the owner-operator, not a salesman who hands jobs off to a crew. With twenty years of formal training as a journeyman and foreman on large-scale commercial projects, he is on site for the key phases of every install and is accountable from estimate through final inspection.</p></div>
       </details>
       <details class="faq-item">
         <summary><h3>Does Sestito Electrical install EV chargers like Tesla Wall Connectors?</h3><span class="plus">+</span></summary>
@@ -606,7 +607,7 @@
       </details>
       <details class="faq-item">
         <summary><h3>What makes Sestito Electrical different from other North Shore electricians?</h3><span class="plus">+</span></summary>
-        <div class="faq-answer"><p>Three things. Stefano is union-trained with twenty years of experience as a journeyman and foreman on large-scale commercial and healthcare projects across Greater Boston. He is personally on site for every job instead of dispatching crews. And every estimate is itemized and transparent with permit and inspection costs included up front. No surprises.</p></div>
+        <div class="faq-answer"><p>Three things. Stefano is a master electrician with twenty years of formal training as a journeyman and foreman on large-scale commercial and healthcare projects across Greater Boston. He is personally on site for every job instead of dispatching crews. And every estimate is itemized and transparent with permit and inspection costs included up front. No surprises.</p></div>
       </details>
     </div>
 
@@ -625,7 +626,7 @@
           <span class="brand-mark"><svg><use href="#sestito-logo"/></svg></span>
           <span class="brand-text" style="color:var(--bone)">Sestito Electrical<small style="color:var(--flag-red);white-space:nowrap">Middleton, Mass. <span class="sep">/</span> Est. 2020</small></span>
         </div>
-        <p class="footer-tag">Union-trained electrical craftsmanship for homes that matter. Made in Massachusetts.</p>
+        <p class="footer-tag">Master-grade electrical craftsmanship for homes that matter. Made in Massachusetts.</p>
       </div>
       <div class="footer-col"><h5>Explore</h5><ul>
         <li><a href="/#area">Service Area</a></li><li><a href="/#services">Services</a></li>
@@ -646,7 +647,7 @@
       </ul></div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-bottom-line">&copy; 2026 Sestito Electrical LLC <span class="sep">/</span> Licensed, Bonded &amp; Insured <span class="sep">/</span> Middleton, MA <span class="sep">/</span> <span class="union-inline"><svg><use href="#star-sm"/></svg>Proudly Union <span class="sep">/</span> Made in the U.S.A.<svg><use href="#star-sm"/></svg></span></div>
+      <div class="footer-bottom-line">&copy; 2026 Sestito Electrical LLC <span class="sep">/</span> Licensed &amp; Insured <span class="sep">/</span> Middleton, MA <span class="sep">/</span> <span class="union-inline"><svg><use href="#star-sm"/></svg>Made in the U.S.A.<svg><use href="#star-sm"/></svg></span></div>
     </div>
   </div>
 </footer>
